@@ -10,3 +10,7 @@ sources:
             description: One record per customer.
           - name: orders
             description: One record per order. Includes cancelled and deleted orders.
+            loaded_at_field: _etl_loaded_at
+            freshness:
+              warn_after: {count: 6, period: hour}
+              error_after: {count: 24, period: day}
