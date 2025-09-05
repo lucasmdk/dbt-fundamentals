@@ -14,10 +14,11 @@ final as (
                 then amount
                 else 0
                 end) as {{ payment_method }}_amount
-          
-                {%- if not loop.last -%} -- True if last iteration
-                    ,                    -- Para o for, garante que case when não termina em ,
-                {% endif -%}             -- Assim código SQL não resulta em erro
+
+                /* True if last iteration
+                Garante que case when não termina em , ao final do for
+                Assim código SQL não resulta em erro */
+                {%- if not loop.last -%} , {% endif -%}
 
        {%- endfor %}
    from payments
