@@ -1,6 +1,8 @@
-with 
+{{ config(
+    materialized = 'view'
+)}}
 
-source as (
+with source as (
 
   select * from {{ source('jaffle_shop', 'customers') }}
 
